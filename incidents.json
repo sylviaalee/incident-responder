@@ -1,0 +1,364 @@
+[
+  {
+    "id": "INC-001",
+    "severity": "high",
+    "category": "simple",
+    "timestamp": "2026-02-11T14:23:45Z",
+    "service": "api-gateway",
+    "title": "API Gateway returning 503 errors",
+    "description": "All API requests are failing with 503 Service Unavailable",
+    "metrics": {
+      "error_rate": 98.5,
+      "cpu_usage": 12,
+      "memory_usage": 45,
+      "disk_usage": 62,
+      "active_connections": 0,
+      "response_time_p95": null
+    },
+    "logs": [
+      "ERROR: Unable to connect to upstream service",
+      "ERROR: Connection pool exhausted",
+      "WARN: All backend instances marked unhealthy"
+    ],
+    "affected_users": 15000,
+    "related_services": ["user-service", "payment-service"],
+    "recent_changes": [
+      {
+        "timestamp": "2026-02-11T14:15:00Z",
+        "change": "user-service scaled down to 0 instances for maintenance",
+        "author": "devops-bot"
+      }
+    ]
+  },
+  {
+    "id": "INC-002",
+    "severity": "critical",
+    "category": "simple",
+    "timestamp": "2026-02-11T09:12:33Z",
+    "service": "database-primary",
+    "title": "Database disk space at 100%",
+    "description": "Primary database unable to write new data",
+    "metrics": {
+      "error_rate": 67.3,
+      "cpu_usage": 34,
+      "memory_usage": 78,
+      "disk_usage": 100,
+      "active_connections": 450,
+      "response_time_p95": 8500
+    },
+    "logs": [
+      "FATAL: could not write to file: No space left on device",
+      "ERROR: disk full writing transaction log",
+      "WARN: WAL archive location at capacity"
+    ],
+    "affected_users": 8500,
+    "related_services": ["order-service", "inventory-service"],
+    "recent_changes": []
+  },
+  {
+    "id": "INC-003",
+    "severity": "medium",
+    "category": "simple",
+    "timestamp": "2026-02-11T16:45:12Z",
+    "service": "ssl-certificate",
+    "title": "SSL certificate expired for api.example.com",
+    "description": "Users reporting SSL/TLS errors when accessing API",
+    "metrics": {
+      "error_rate": 45.2,
+      "cpu_usage": 18,
+      "memory_usage": 42,
+      "disk_usage": 55,
+      "active_connections": 234,
+      "response_time_p95": 250
+    },
+    "logs": [
+      "ERROR: SSL certificate expired on 2026-02-11T00:00:00Z",
+      "WARN: Certificate validation failed",
+      "INFO: Certificate subject: CN=api.example.com, expiry: 2026-02-11"
+    ],
+    "affected_users": 3200,
+    "related_services": ["load-balancer"],
+    "recent_changes": []
+  },
+  {
+    "id": "INC-004",
+    "severity": "high",
+    "category": "medium",
+    "timestamp": "2026-02-11T11:34:22Z",
+    "service": "checkout-service",
+    "title": "Payment processing failures with sporadic success",
+    "description": "70% of payment attempts failing, but some succeed",
+    "metrics": {
+      "error_rate": 72.8,
+      "cpu_usage": 89,
+      "memory_usage": 94,
+      "disk_usage": 58,
+      "active_connections": 1200,
+      "response_time_p95": 15000
+    },
+    "logs": [
+      "ERROR: Payment gateway timeout after 10000ms",
+      "WARN: GC overhead limit exceeded, pausing application",
+      "ERROR: Connection reset by peer - payment-gateway-1.internal",
+      "INFO: Successful payment processed in 234ms",
+      "ERROR: OutOfMemoryError: Java heap space",
+      "WARN: Thread pool exhausted, 450 queued requests"
+    ],
+    "affected_users": 4500,
+    "related_services": ["payment-gateway", "order-service"],
+    "recent_changes": [
+      {
+        "timestamp": "2026-02-11T10:00:00Z",
+        "change": "Deployed v2.4.1 with new retry logic and caching layer",
+        "author": "jane.smith"
+      }
+    ]
+  },
+  {
+    "id": "INC-005",
+    "severity": "critical",
+    "category": "medium",
+    "timestamp": "2026-02-11T13:28:17Z",
+    "service": "search-service",
+    "title": "Search returning stale results with degraded performance",
+    "description": "Search index appears frozen at yesterday's data, queries timing out",
+    "metrics": {
+      "error_rate": 34.5,
+      "cpu_usage": 23,
+      "memory_usage": 67,
+      "disk_usage": 88,
+      "active_connections": 890,
+      "response_time_p95": 9200
+    },
+    "logs": [
+      "WARN: ElasticSearch cluster status: YELLOW",
+      "ERROR: Index replication failed - shard 3 unassigned",
+      "INFO: Last successful index update: 2026-02-10T23:45:12Z",
+      "ERROR: Query timeout exceeded on index product_catalog_v2",
+      "WARN: Disk watermark [high] exceeded on node search-03",
+      "ERROR: Cache service connection refused - redis-cluster.internal:6379"
+    ],
+    "affected_users": 12000,
+    "related_services": ["product-catalog", "redis-cache"],
+    "recent_changes": [
+      {
+        "timestamp": "2026-02-11T02:00:00Z",
+        "change": "Scheduled index optimization job started",
+        "author": "cron-scheduler"
+      }
+    ]
+  },
+  {
+    "id": "INC-006",
+    "severity": "high",
+    "category": "medium",
+    "timestamp": "2026-02-11T08:15:44Z",
+    "service": "notification-service",
+    "title": "Email notifications delayed by 2+ hours",
+    "description": "Email queue backing up, customers not receiving order confirmations",
+    "metrics": {
+      "error_rate": 15.3,
+      "cpu_usage": 78,
+      "memory_usage": 56,
+      "disk_usage": 71,
+      "active_connections": 45,
+      "response_time_p95": 450,
+      "queue_depth": 45000
+    },
+    "logs": [
+      "WARN: SQS queue depth at 45000 messages (normal: <1000)",
+      "ERROR: SMTP connection timeout to mail-relay-02.internal",
+      "INFO: Worker pool: 4 active, 2 idle, 0 starting",
+      "WARN: Rate limit approaching for SendGrid API (80% of quota)",
+      "ERROR: Database connection pool exhausted when logging email status",
+      "INFO: Email sent successfully via backup relay: mail-relay-01.internal"
+    ],
+    "affected_users": 8900,
+    "related_services": ["order-service", "sqs-queue", "sendgrid-api"],
+    "recent_changes": [
+      {
+        "timestamp": "2026-02-11T06:00:00Z",
+        "change": "Auto-scaling policy updated: min instances 2 -> 4",
+        "author": "devops-bot"
+      },
+      {
+        "timestamp": "2026-02-10T22:30:00Z",
+        "change": "mail-relay-02 patched and rebooted for security update",
+        "author": "security-team"
+      }
+    ]
+  },
+  {
+    "id": "INC-007",
+    "severity": "critical",
+    "category": "hard",
+    "timestamp": "2026-02-11T15:22:09Z",
+    "service": "authentication-service",
+    "title": "Intermittent authentication failures across all platforms",
+    "description": "Random login failures, but health checks passing and metrics look normal",
+    "metrics": {
+      "error_rate": 23.7,
+      "cpu_usage": 45,
+      "memory_usage": 62,
+      "disk_usage": 54,
+      "active_connections": 2300,
+      "response_time_p95": 180
+    },
+    "logs": [
+      "INFO: Health check passed - all systems operational",
+      "ERROR: JWT validation failed: signature mismatch",
+      "INFO: Successful login for user_id: 78945",
+      "ERROR: Token validation failed for user_id: 78945 (same user, 2 seconds later)",
+      "WARN: Clock skew detected between auth-service-03 and ntp server: -45 seconds",
+      "INFO: Cache hit rate: 94.5% (normal range)",
+      "ERROR: Redis returned token for user_id 45632, but signature invalid",
+      "INFO: Database query time: 12ms (normal)",
+      "WARN: NTP sync failed on auth-service-03, auth-service-07",
+      "INFO: Token issued at: 2026-02-11T15:22:45Z, validated at: 2026-02-11T15:21:58Z"
+    ],
+    "affected_users": 5400,
+    "related_services": ["user-service", "redis-cache", "session-manager"],
+    "recent_changes": [
+      {
+        "timestamp": "2026-02-11T14:00:00Z",
+        "change": "Added 4 new auth-service instances to handle traffic spike",
+        "author": "auto-scaler"
+      },
+      {
+        "timestamp": "2026-02-11T12:00:00Z",
+        "change": "Updated JWT library to v5.2.1 for security patch",
+        "author": "security-team"
+      }
+    ]
+  },
+  {
+    "id": "INC-008",
+    "severity": "high",
+    "category": "hard",
+    "timestamp": "2026-02-11T10:08:31Z",
+    "service": "recommendation-engine",
+    "title": "ML recommendations causing cascading failures but models report healthy",
+    "description": "Product recommendations timing out and causing cart service degradation",
+    "metrics": {
+      "error_rate": 41.2,
+      "cpu_usage": 91,
+      "memory_usage": 73,
+      "disk_usage": 64,
+      "active_connections": 3400,
+      "response_time_p95": 12000,
+      "model_accuracy": 0.94,
+      "model_latency_p95": 45
+    },
+    "logs": [
+      "INFO: ML model v3.2.1 loaded successfully, accuracy: 0.94",
+      "ERROR: Recommendation request timeout after 10000ms",
+      "INFO: Feature store latency: 42ms (within SLA)",
+      "WARN: Recommendation payload size: 2.4MB (expected: <100KB)",
+      "ERROR: Cart service OOM killed, restarting container",
+      "INFO: Model returning 1,847 recommendations per request (previous: 12)",
+      "ERROR: JSON serialization timeout on recommendation response",
+      "WARN: Network bandwidth saturation on recommendation-engine subnet",
+      "INFO: Cache bypass rate: 89% (normal: 5%)",
+      "ERROR: Downstream service cart-service-04 connection timeout"
+    ],
+    "affected_users": 7200,
+    "related_services": ["cart-service", "product-catalog", "feature-store"],
+    "recent_changes": [
+      {
+        "timestamp": "2026-02-11T09:00:00Z",
+        "change": "Deployed ML model v3.2.1 with improved personalization algorithm",
+        "author": "ml-team"
+      },
+      {
+        "timestamp": "2026-02-11T08:30:00Z",
+        "change": "Feature flag enabled: 'enhanced_recommendations' for 100% of traffic",
+        "author": "product-team"
+      }
+    ]
+  },
+  {
+    "id": "INC-009",
+    "severity": "medium",
+    "category": "no_runbook",
+    "timestamp": "2026-02-11T12:47:23Z",
+    "service": "blockchain-integration",
+    "title": "Cryptocurrency payment confirmations stuck in pending state",
+    "description": "Bitcoin and Ethereum transactions not being confirmed for 3+ hours",
+    "metrics": {
+      "error_rate": 0,
+      "cpu_usage": 34,
+      "memory_usage": 58,
+      "disk_usage": 49,
+      "active_connections": 156,
+      "response_time_p95": 320,
+      "pending_transactions": 234,
+      "blockchain_sync_height": 1847293
+    },
+    "logs": [
+      "INFO: Connected to Ethereum node: geth-1.internal:8545",
+      "INFO: Current block height: 1847293",
+      "WARN: Transaction 0x7f3d...4a2c pending for 187 minutes",
+      "INFO: Gas price used: 45 Gwei (network median: 120 Gwei)",
+      "WARN: Mempool shows 45,000+ pending transactions (congested)",
+      "INFO: Nonce sequence correct for all pending transactions",
+      "ERROR: Web3 provider connection timeout (recovered automatically)",
+      "INFO: Blockchain service health: OPERATIONAL",
+      "WARN: 234 transactions with insufficient gas price for current network conditions"
+    ],
+    "affected_users": 67,
+    "related_services": ["payment-gateway", "web3-provider"],
+    "recent_changes": [
+      {
+        "timestamp": "2026-02-08T16:00:00Z",
+        "change": "Updated gas price calculation algorithm to optimize costs",
+        "author": "blockchain-team"
+      }
+    ]
+  },
+  {
+    "id": "INC-010",
+    "severity": "high",
+    "category": "no_runbook",
+    "timestamp": "2026-02-11T14:56:18Z",
+    "service": "ai-content-moderation",
+    "title": "AI content filter blocking legitimate user posts at high rate",
+    "description": "90% false positive rate on content moderation causing user complaints",
+    "metrics": {
+      "error_rate": 5.2,
+      "cpu_usage": 67,
+      "memory_usage": 81,
+      "disk_usage": 58,
+      "active_connections": 890,
+      "response_time_p95": 450,
+      "moderation_accuracy": 0.12,
+      "false_positive_rate": 0.91,
+      "blocked_posts_24h": 12453
+    },
+    "logs": [
+      "INFO: Content moderation model v2.8.4 initialized",
+      "WARN: Post ID 893421 blocked - confidence: 0.97 (category: spam)",
+      "INFO: Human review queue depth: 8,234 items (SLA: <500)",
+      "ERROR: Unexpected token in training data manifest file",
+      "WARN: Model using fallback weights from 2026-01-15 (current weights corrupted)",
+      "INFO: Appeal rate: 87% of blocked content (normal: <10%)",
+      "ERROR: Feature extraction pipeline returned NaN values for text embedding",
+      "WARN: Model calibration scores outside expected range",
+      "INFO: Switching to backup model v2.7.2 (failed)",
+      "ERROR: S3 bucket access denied for model artifact: s3://ml-models/moderation/v2.8.5/"
+    ],
+    "affected_users": 4200,
+    "related_services": ["user-content-service", "ml-inference-api", "human-review-queue"],
+    "recent_changes": [
+      {
+        "timestamp": "2026-02-11T13:00:00Z",
+        "change": "Deployed content moderation model v2.8.4 (retraining on expanded dataset)",
+        "author": "ml-ops-team"
+      },
+      {
+        "timestamp": "2026-02-11T11:30:00Z",
+        "change": "Rotated S3 access credentials for ML model storage",
+        "author": "security-team"
+      }
+    ]
+  }
+]

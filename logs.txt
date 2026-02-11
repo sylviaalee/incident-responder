@@ -1,0 +1,198 @@
+2025-02-11 08:15:23 INFO Server started on port 8080
+2025-02-11 08:15:24 INFO Database connection established
+2025-02-11 08:15:25 INFO Loading configuration from /etc/app/config.yml
+
+2025-02-11 08:15:27 DEBUG User authentication module initialized
+2025-02-11 08:15:28 INFO API endpoint /health registered
+2025-02-11 08:15:29 ERROR Failed to load plugin: missing dependency libfoo.so
+2025-02-11 08:15:30 WARN Deprecated configuration option 'old_setting' detected
+2025-02-11 08:15:31 INFO Cache service started
+2025-02-11 08:15:32 DEBUG Memory allocated: 256MB
+2025-02-11 08:15:33 INFO User session manager ready
+
+02/11/2025 8:15:34 INFO Request received from 192.168.1.100
+2025-02-11 08:15:35 INFO Processing user login: user_12345
+2025-02-11 08:15:36 ERROR Authentication failed for user_12345: invalid credentials
+2025-02-11 08:15:37 DEBUG Session token generation attempted
+2025-02-11 08:15:38 INFO Request completed in 125ms
+
+DEBUG: random debug output that shouldn't be here
+2025-02-11 08:15:40 INFO New connection from 10.0.0.45
+2025-02-11 08:15:41 DEBUG Query execution time: 23ms
+2025-02-11 08:15:42 INFO User profile loaded for user_67890
+2025-02-11 08:15:43 WARN Rate limit approaching for IP 10.0.0.45
+
+2025-02-11 08:15:45 ERROR Database query timeout after 30s
+2025-02-11 08:15:46 INFO Retry attempt 1/3
+2025-02-11 08:15:47 ERROR Database query timeout after 30s
+2025-02-11 08:15:48 INFO Retry attempt 2/3
+08:15:49 INFO Connection successful
+2025-02-11 08:15:50 INFO Query completed successfully
+
+[GARBAGE] ===== Some random text that got into the log =====
+2025-02-11 08:15:52 DEBUG Cache hit for key: user_settings_67890
+2025-02-11 08:15:53 INFO Response sent: 200 OK
+2025-02-11 08:15:54 INFO Request from 192.168.1.101 - GET /api/users
+2025-02-11 08:15:55 DEBUG Parsing request parameters
+2025-02-11 08:15:56 ERROR Invalid request parameter: 'filter' must be string
+
+2025-02-11 08:15:58 INFO Sending 400 Bad Request
+2025-02-11 08:15:59 WARN Failed login attempt detected from 10.0.0.78
+2025-02-11 08:16:00 INFO Security alert triggered
+2025-02-11 08:16:01 DEBUG Checking IP against blacklist
+2025-02-11 08:16:02 INFO IP 10.0.0.78 added to temporary blacklist
+
+2025-02-11T08:16:03Z INFO Another timestamp format appeared
+2025-02-11 08:16:04 DEBUG Thread pool size: 10 active, 50 max
+2025-02-11 08:16:05 INFO Background job started: daily_cleanup
+2025-02-11 08:16:06 DEBUG Scanning temp directory
+2025-02-11 08:16:07 INFO Deleted 145 temporary files
+
+<<<DEVELOPER NOTE: Testing logging at various levels>>>
+2025-02-11 08:16:09 ERROR Failed to send email notification: SMTP connection refused
+2025-02-11 08:16:10 WARN Email service unavailable, queuing for retry
+2025-02-11 08:16:11 INFO Message queued: id=msg_99887
+2025-02-11 08:16:12 DEBUG Queue size: 1
+
+2025-02-11 08:16:14 INFO User logout: user_67890
+2025-02-11 08:16:15 DEBUG Session destroyed: sess_abc123
+2025-02-11 08:16:16 INFO Connection closed
+  TIMESTAMP MISSING  ERROR Critical failure in payment processor
+2025-02-11 08:16:18 ERROR Transaction rolled back
+2025-02-11 08:16:19 ERROR Payment gateway returned error code: 5003
+
+2025-02-11 08:16:21 INFO Initiating automatic recovery
+2025-02-11 08:16:22 DEBUG Recovery protocol step 1/5
+2025-02-11 08:16:23 DEBUG Recovery protocol step 2/5
+2025-02-11 08:16:24 DEBUG Recovery protocol step 3/5
+2025-02-11 08:16:25 INFO Payment processor reconnected
+
+[08:16:26] INFO Yet another timestamp format!
+2025-02-11 08:16:27 INFO System health check: PASS
+2025-02-11 08:16:28 DEBUG CPU usage: 45%
+2025-02-11 08:16:29 DEBUG Memory usage: 62%
+2025-02-11 08:16:30 DEBUG Disk usage: 78%
+
+2025-02-11 08:16:32 WARN High disk usage detected
+2025-02-11 08:16:33 INFO Cleanup job scheduled
+2025-02-11 08:16:34 INFO New API request: POST /api/orders
+2025-02-11 08:16:35 DEBUG Request body size: 2.4KB
+2025-02-11 08:16:36 INFO Validating order data
+
+ERROR ERROR ERROR - Something went wrong but who knows what!
+2025-02-11 08:16:38 ERROR Validation failed: missing required field 'customer_id'
+2025-02-11 08:16:39 INFO Returning 422 Unprocessable Entity
+2025-02-11 08:16:40 DEBUG Response time: 89ms
+
+2025-02-11 08:16:42 INFO Request: GET /api/products?category=electronics
+2025-02-11 08:16:43 DEBUG Database query: SELECT * FROM products WHERE category='electronics'
+2025-02-11 08:16:44 DEBUG Query returned 234 results
+2025-02-11 08:16:45 INFO Response sent with 234 items
+2025-02-11 08:16:46 WARN Query took longer than expected: 1.2s
+
+2025-02-11 08:16:48 INFO Scheduled backup initiated
+2025-02-11 08:16:49 DEBUG Backup target: /backups/db_20250211
+2025-02-11 08:16:50 INFO Backup in progress...
+2025-02-11 08:16:51 DEBUG Backed up: users table
+2025-02-11 08:16:52 DEBUG Backed up: orders table
+
+DEBUG DEBUG DEBUG - Too much debugging!
+2025-02-11 08:16:54 DEBUG Backed up: products table
+2025-02-11 08:16:55 DEBUG Backed up: sessions table
+2025-02-11 08:16:56 INFO Backup completed successfully
+2025-02-11 08:16:57 INFO Backup size: 1.2GB
+
+2025-02-11 08:16:59 ERROR External API call failed: timeout after 10s
+2025-02-11 08:17:00 ERROR Service: weather-api.example.com
+2025-02-11 08:17:01 WARN Using cached data instead
+2025-02-11 08:17:02 INFO Response generated from cache
+
+11-02-2025 08:17:03 INFO Weird date format here
+2025-02-11 08:17:04 DEBUG WebSocket connection established
+2025-02-11 08:17:05 INFO Client subscribed to channel: notifications
+2025-02-11 08:17:06 DEBUG Heartbeat sent
+2025-02-11 08:17:07 DEBUG Heartbeat received
+
+2025-02-11 08:17:09 INFO User registration: new_user_555
+2025-02-11 08:17:10 DEBUG Hashing password
+2025-02-11 08:17:11 DEBUG Validating email format
+2025-02-11 08:17:12 ERROR Email validation failed: invalid domain
+2025-02-11 08:17:13 INFO Registration rejected
+
+=== TRACE DUMP START ===
+Stack trace: line 1
+Stack trace: line 2
+Stack trace: line 3
+=== TRACE DUMP END ===
+
+2025-02-11 08:17:16 INFO Request: DELETE /api/users/12345
+2025-02-11 08:17:17 DEBUG Authorization check
+2025-02-11 08:17:18 ERROR Unauthorized: insufficient permissions
+2025-02-11 08:17:19 INFO Returning 403 Forbidden
+
+2025-02-11 08:17:21 INFO Periodic metrics collection
+2025-02-11 08:17:22 DEBUG Requests per minute: 127
+2025-02-11 08:17:23 DEBUG Average response time: 234ms
+2025-02-11 08:17:24 DEBUG Error rate: 2.3%
+2025-02-11 08:17:25 INFO Metrics published to monitoring service
+
+2025-02-11 08:17:27 WARN Cache memory usage: 85%
+2025-02-11 08:17:28 INFO Triggering cache eviction
+2025-02-11 08:17:29 DEBUG Evicted 1000 expired entries
+2025-02-11 08:17:30 INFO Cache memory usage now: 64%
+
+No timestamp at all ERROR Something broke!
+2025-02-11 08:17:32 INFO File upload started: document.pdf
+2025-02-11 08:17:33 DEBUG File size: 5.2MB
+2025-02-11 08:17:34 DEBUG Upload progress: 25%
+2025-02-11 08:17:35 DEBUG Upload progress: 50%
+
+2025-02-11 08:17:37 DEBUG Upload progress: 75%
+2025-02-11 08:17:38 DEBUG Upload progress: 100%
+2025-02-11 08:17:39 INFO File upload completed
+2025-02-11 08:17:40 DEBUG Scanning file for malware
+2025-02-11 08:17:41 INFO File scan: clean
+
+2025-02-11 08:17:43 ERROR Database connection lost
+2025-02-11 08:17:44 ERROR Connection pool exhausted
+2025-02-11 08:17:45 INFO Attempting reconnection...
+2025-02-11 08:17:46 INFO Reconnection attempt 1/5 failed
+2025-02-11 08:17:47 INFO Reconnection attempt 2/5 failed
+
+<!-- HTML comment somehow got in here -->
+2025-02-11 08:17:49 INFO Reconnection attempt 3/5 successful
+2025-02-11 08:17:50 INFO Database connection restored
+2025-02-11 08:17:51 DEBUG Connection pool: 8 available, 2 in use
+
+2025-02-11 08:17:53 INFO Request: PATCH /api/settings/user_67890
+2025-02-11 08:17:54 DEBUG Parsing JSON request body
+2025-02-11 08:17:55 ERROR Malformed JSON: unexpected token at line 12
+2025-02-11 08:17:56 INFO Returning 400 Bad Request
+
+2025-02-11 08:17:58 WARN SSL certificate expires in 30 days
+2025-02-11 08:17:59 INFO Certificate renewal reminder sent to admin
+2025-02-11 08:18:00 INFO Session cleanup job started
+2025-02-11 08:18:01 DEBUG Found 45 expired sessions
+2025-02-11 08:18:02 INFO Deleted 45 expired sessions
+
+MALFORMED_TIMESTAMP 08:18:03 ERROR This line is broken
+2025-02-11 08:18:04 INFO Request: GET /api/reports/daily
+2025-02-11 08:18:05 DEBUG Generating report for date: 2025-02-10
+2025-02-11 08:18:06 DEBUG Aggregating data from 12 sources
+2025-02-11 08:18:07 INFO Report generation completed
+
+2025-02-11 08:18:09 INFO Report size: 234KB
+2025-02-11 08:18:10 DEBUG Compressing report
+2025-02-11 08:18:11 INFO Compressed size: 89KB
+2025-02-11 08:18:12 INFO Report sent to requester
+
+Random text: xyzzy123 - what is this doing here?
+2025-02-11 08:18:14 INFO Request: POST /api/webhooks/github
+2025-02-11 08:18:15 DEBUG Validating webhook signature
+2025-02-11 08:18:16 ERROR Invalid webhook signature
+2025-02-11 08:18:17 WARN Possible security issue: invalid webhook attempt
+2025-02-11 08:18:18 INFO Webhook rejected
+
+2025-02-11 08:18:20 INFO Rate limiter: IP 192.168.1.100 exceeded limit
+2025-02-11 08:18:21 INFO Returning 429 Too Many Requests
+2025-02-11 08:18:22 DEBUG Rate limit reset in: 3600s
