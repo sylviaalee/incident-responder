@@ -4,7 +4,7 @@ A multi-agent system that triages incidents, diagnoses root causes, and drafts r
 """
 
 from crewai import Agent, Task, Crew, Process
-from crewai_tools import tool
+from crewai.tools import tool
 import json
 from typing import Dict, List, Any
 from datetime import datetime
@@ -323,7 +323,7 @@ def run_incident_response(incident: Dict[str, Any]) -> str:
         agents=[triage_agent, diagnostic_agent, remediation_agent],
         tasks=[triage_task, diagnostic_task, remediation_task],
         process=Process.sequential,  # Tasks execute in order, each can use previous outputs
-        verbose=2  # Maximum verbosity to see agent reasoning
+        verbose=True  # Maximum verbosity to see agent reasoning
     )
     
     # Execute the pipeline
